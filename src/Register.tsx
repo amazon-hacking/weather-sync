@@ -7,7 +7,7 @@ export default function Register(): JSX.Element {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [notifications, setNotifications] = useState(true); // ✅ padrão: deseja receber
+  const [notifications, setNotifications] = useState(true);
 
   const navigate = useNavigate();
 
@@ -20,7 +20,7 @@ export default function Register(): JSX.Element {
         password,
         phoneNumber,
         provider: "credentials",
-        notifications: notifications ? "yes" : "no" // ✅ envio compatível com backend
+        notifications: notifications ? "yes" : "no"
       });
       alert("Usuário registrado com sucesso!");
       navigate("/login");
@@ -30,24 +30,71 @@ export default function Register(): JSX.Element {
   };
 
   return (
-    <form onSubmit={handleRegister}>
-      <h2>Registro</h2>
-      <input type="text" placeholder="Nome" value={name} onChange={(e) => setName(e.target.value)} required />
-      <input type="email" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)} required />
-      <input type="password" placeholder="Senha" value={password} onChange={(e) => setPassword(e.target.value)} required />
-      <input type="tel" placeholder="Número de celular" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} required />
+    <div className="auth-form-container"> {/* Novo container para centralizar */}
+      <form onSubmit={handleRegister} className="auth-form"> {/* Nova classe para o form */}
+        <h2 className="mb-4">Registro</h2>
+        <div className="mb-3">
+          <label htmlFor="name" className="form-label">Nome</label>
+          <input
+            type="text"
+            className="form-control"
+            id="name"
+            placeholder="Nome"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="email" className="form-label">E-mail</label>
+          <input
+            type="email"
+            className="form-control"
+            id="email"
+            placeholder="E-mail"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="password" className="form-label">Senha</label>
+          <input
+            type="password"
+            className="form-control"
+            id="password"
+            placeholder="Senha"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="phoneNumber" className="form-label">Número de celular</label>
+          <input
+            type="tel"
+            className="form-control"
+            id="phoneNumber"
+            placeholder="Número de celular"
+            value={phoneNumber}
+            onChange={(e) => setPhoneNumber(e.target.value)}
+            required
+          />
+        </div>
 
-      {/* ✅ Opção para notificações */}
-      <label style={{ display: "block", marginTop: "10px" }}>
-        <input
-          type="checkbox"
-          checked={notifications}
-          onChange={(e) => setNotifications(e.target.checked)}
-        />
-        Desejo receber notificações
-      </label>
+        <div className="mb-3 form-check">
+          <input
+            type="checkbox"
+            className="form-check-input"
+            id="notifications"
+            checked={notifications}
+            onChange={(e) => setNotifications(e.target.checked)}
+          />
+          <label className="form-check-label" htmlFor="notifications">Desejo receber notificações</label>
+        </div>
 
-      <button type="submit">Registrar</button>
-    </form>
+        <button type="submit" className="btn btn-primary">Registrar</button>
+      </form>
+    </div>
   );
 }
