@@ -11,11 +11,8 @@ type Bairro = {
 export default function Home(): JSX.Element {
   const [bairros, setBairros] = useState<Bairro[]>([]);
   const [erro, setErro] = useState<string>("");
-<<<<<<< HEAD
   const [salvando, setSalvando] = useState(false);
   const [loading, setLoading] = useState(true); // ← estado de carregamento
-=======
->>>>>>> f51a4edc8d997dd68e7032b85a191f7aba36eaea
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -34,23 +31,16 @@ export default function Home(): JSX.Element {
         setBairros(
           favoritos.map((b) => ({
             ...b,
-<<<<<<< HEAD
             originallyFavorite: b.isFavorite,
-=======
-            originallyFavorite: b.isFavorite, // ← usado para detectar mudanças
->>>>>>> f51a4edc8d997dd68e7032b85a191f7aba36eaea
           }))
         );
       })
       .catch((err) => {
         console.error("Erro ao buscar bairros:", err);
         setErro("Você não está autorizado. Faça login para continuar.");
-<<<<<<< HEAD
       })
       .finally(() => {
         setLoading(false); // ← fim do carregamento
-=======
->>>>>>> f51a4edc8d997dd68e7032b85a191f7aba36eaea
       });
   }, []);
 
@@ -66,18 +56,11 @@ export default function Home(): JSX.Element {
 
   const handleSalvar = async () => {
     const token = localStorage.getItem("token");
-<<<<<<< HEAD
     setSalvando(true);
-=======
->>>>>>> f51a4edc8d997dd68e7032b85a191f7aba36eaea
 
     try {
       for (const bairro of bairros) {
         if (bairro.isFavorite && bairro.originallyFavorite !== true) {
-<<<<<<< HEAD
-=======
-          // Adicionar novo favorito
->>>>>>> f51a4edc8d997dd68e7032b85a191f7aba36eaea
           await fetch("http://localhost:8080/v1/favorite-places", {
             method: "POST",
             headers: {
@@ -87,10 +70,6 @@ export default function Home(): JSX.Element {
             body: JSON.stringify({ placeId: bairro.id }),
           });
         } else if (!bairro.isFavorite && bairro.originallyFavorite === true) {
-<<<<<<< HEAD
-=======
-          // Remover favorito antigo
->>>>>>> f51a4edc8d997dd68e7032b85a191f7aba36eaea
           await fetch(
             `http://localhost:8080/v1/favorite-places/${bairro.id}`,
             {
@@ -104,18 +83,12 @@ export default function Home(): JSX.Element {
       }
 
       alert("Configurações atualizadas com sucesso!");
-<<<<<<< HEAD
       window.location.reload(); // Recarrega a página após sucesso
     } catch (err) {
       console.error("Erro ao atualizar configurações:", err);
       alert("Erro ao salvar configurações.");
     } finally {
       setSalvando(false);
-=======
-    } catch (err) {
-      console.error("Erro ao atualizar configurações:", err);
-      alert("Erro ao salvar configurações.");
->>>>>>> f51a4edc8d997dd68e7032b85a191f7aba36eaea
     }
   };
 
@@ -127,21 +100,12 @@ export default function Home(): JSX.Element {
 
   return (
     <div className="col-md-6 offset-md-3">
-<<<<<<< HEAD
       <div className="d-flex justify-content-end mb-3"></div>
-=======
-      <div className="d-flex justify-content-end mb-3">
-        <button className="btn btn-outline-danger" onClick={handleLogout}>
-          Sair
-        </button>
-      </div>
->>>>>>> f51a4edc8d997dd68e7032b85a191f7aba36eaea
 
       <h2 className="mb-4">Configurar bairros favoritos</h2>
 
       {erro && <div className="alert alert-danger">{erro}</div>}
 
-<<<<<<< HEAD
       {loading ? (
         <p>Carregando bairros...</p>
       ) : (
@@ -192,41 +156,6 @@ export default function Home(): JSX.Element {
           <button className="btn btn-outline-danger mt-3" onClick={handleLogout}>
             Sair
           </button>
-=======
-      <ul className="list-group">
-        {bairros.map((bairro) => (
-          <li
-            key={bairro.id}
-            className="list-group-item d-flex justify-content-between align-items-center"
-          >
-            <span>
-              {bairro.name}
-              {bairro.isFavorite && (
-                <span className="badge bg-success ms-2">favorito</span>
-              )}
-            </span>
-            <button
-              className={`btn btn-sm ${
-                bairro.isFavorite
-                  ? "btn-outline-danger"
-                  : "btn-outline-primary"
-              }`}
-              onClick={() => handleToggleFavorito(bairro.id)}
-            >
-              {bairro.isFavorite ? "Remover" : "Adicionar"}
-            </button>
-          </li>
-        ))}
-      </ul>
-
-      {bairros.length > 0 && (
-        <div className="mt-4 d-flex justify-content-end">
-          <button className="btn btn-primary" onClick={handleSalvar}>
-            Atualizar configurações
-          </button>
-        </div>
-      )}
->>>>>>> f51a4edc8d997dd68e7032b85a191f7aba36eaea
     </div>
   );
 }
