@@ -32,14 +32,22 @@ export default function Register(): JSX.Element {
   return (
     <div className="auth-form-container"> {/* Novo container para centralizar */}
       <form onSubmit={handleRegister} className="auth-form"> {/* Nova classe para o form */}
+<<<<<<< HEAD
         <h2 className="mb-4">Registrar usuário</h2>
+=======
+        <h2 className="mb-4">Registro</h2>
+>>>>>>> f51a4edc8d997dd68e7032b85a191f7aba36eaea
         <div className="mb-3">
           <label htmlFor="name" className="form-label">Nome</label>
           <input
             type="text"
             className="form-control"
             id="name"
+<<<<<<< HEAD
             placeholder="Exemplo: João Miguel"
+=======
+            placeholder="Nome"
+>>>>>>> f51a4edc8d997dd68e7032b85a191f7aba36eaea
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
@@ -51,7 +59,11 @@ export default function Register(): JSX.Element {
             type="email"
             className="form-control"
             id="email"
+<<<<<<< HEAD
             placeholder="Exemplo: teste@gmail.com"
+=======
+            placeholder="E-mail"
+>>>>>>> f51a4edc8d997dd68e7032b85a191f7aba36eaea
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -63,7 +75,11 @@ export default function Register(): JSX.Element {
             type="password"
             className="form-control"
             id="password"
+<<<<<<< HEAD
             placeholder="*******"
+=======
+            placeholder="Senha"
+>>>>>>> f51a4edc8d997dd68e7032b85a191f7aba36eaea
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
@@ -75,7 +91,11 @@ export default function Register(): JSX.Element {
             type="tel"
             className="form-control"
             id="phoneNumber"
+<<<<<<< HEAD
             placeholder="Ex: 91912345678"
+=======
+            placeholder="Número de celular"
+>>>>>>> f51a4edc8d997dd68e7032b85a191f7aba36eaea
             value={phoneNumber}
             onChange={(e) => setPhoneNumber(e.target.value)}
             required
