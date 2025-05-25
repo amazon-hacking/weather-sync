@@ -57,17 +57,4 @@ export const CronJobs = new Elysia()
         }
       },
     })
-  )
-  .use(
-    cron({
-      name: "cron-health-status",
-      pattern: "*/5 * * * * *",
-      timezone: "America/Belem",
-
-      async run() {
-        console.log(
-          `[CRON] Verificando status de saúde em ${new Date().toISOString()}`
-        );
-      },
-    })
   );
