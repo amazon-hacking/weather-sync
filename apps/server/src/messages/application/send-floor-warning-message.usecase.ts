@@ -50,15 +50,16 @@ export async function sendFloorWarningMessageUseCase(
     }
 
     await Promise.allSettled(
-      users.map((user) => {
+      users.map(async (user) => {
         // Envia a mensagem para cada usuário
-        const response = services.twilionWhatsappService.sendWhatsAppMessage(
-          user.phoneNumber,
-          {
-            place: place.name,
-            floor: criticalPlace.waterLevel.toString(),
-          }
-        );
+        const response =
+          await services.twilionWhatsappService.sendWhatsAppMessage(
+            user.phoneNumber,
+            {
+              place: place.name,
+              floor: criticalPlace.waterLevel.toString(),
+            }
+          );
         console.log("Response: ", response);
       })
     );

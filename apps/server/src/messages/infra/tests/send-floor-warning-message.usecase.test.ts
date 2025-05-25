@@ -233,5 +233,5 @@ describe("Send Floor Warning Message UseCase", () => {
       console.error("Error in test:", error);
       throw error; // Re-throw the error to fail the test
     }
-  });
+  }, 10000);
 });
