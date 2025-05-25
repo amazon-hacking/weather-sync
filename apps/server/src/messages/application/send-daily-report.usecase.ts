@@ -2,7 +2,7 @@
 import type { IFavoritePlaceRepository } from "@/favorite-places/domain/favorite-place.interface.repository";
 import { favoritePlaceType } from "@/favorite-places/domain/favorite-place.type";
 import { generateWeatherPDF } from "@/shared/lib/mail/generate-weather-pdf";
-import { mail } from "@/shared/lib/mail/mail";
+import { getFromEmail, mail } from "@/shared/lib/mail/mail";
 import { generateEmailHTML } from "@/shared/utils/email-message-html";
 import type { IUsersRepository } from "@/users/domain/users-repository.interface";
 import type { IWeatherRepository } from "@/weather/domain/weather-repository.interface";
@@ -132,7 +132,7 @@ export async function sendDailyReport(
   await Promise.allSettled(
     usersWithValidData.map(async (user) => {
       try {
-        const reportDate = new Date().toLocaleDateString("pt-BR");
+        const reportDate = new Date().toLocaleDateString("en-US");
         const placesWithData = user.userFavoritePlaces.filter(
           (place) => place.weatherData.length > 0
         );
@@ -177,7 +177,7 @@ export async function sendDailyReport(
 
         // Enviar email
         const sendEmailResult = await mail.sendMail({
-          from: { name: "Weather Sync", address: "weather-sync@gmail.com" },
+          from: { name: "Weather Sync", address: getFromEmail() },
           to: user.userEmail,
           subject: `🌤️ Seu Relatório Meteorológico - ${reportDate}`,
           html: emailHtml,

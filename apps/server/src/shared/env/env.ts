@@ -20,15 +20,19 @@ const envSchema = z.object({
   TWILIO_AUTH_TOKEN: z.string().min(1),
   TWILIO_PHONE_NUMBER: z.string().min(1),
   TWILIO_TEMPLATE: z.string().min(1),
+  TWILIO_MESSAGING_SERVICE_SID: z.string().min(1),
 
   /**
    * MAIL ENVIROMENTS
    */
-  // NODEMAILER_HOST: z.string().min(1),
-  // NODEMAILER_PORT: z.coerce.number().default(587),
-  // NODEMAILER_USER: z.string().min(1),
-  // NODEMAILER_PASS: z.string().min(1),
-  // EMAIL: z.string().email().min(1),
+  MAIL_FROM: z.string().email().min(1),
+
+  /**
+   * AWS ENVIROMENTS
+   */
+  AWS_REGION: z.string().min(1),
+  AWS_ACCESS_KEY_ID: z.string().min(1),
+  AWS_SECRET_ACCESS_KEY: z.string().min(1),
 
   ALLOWED_ORIGINS: z.string().optional().default("http://localhost:3000"),
 });
