@@ -1,0 +1,122 @@
+/* index.css */
+:root {
+    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+    color-scheme: light dark;
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #e6f7ff; /* Azul claro para o fundo */
+}
+
+body {
+  margin: 0;
+  background-color: #e6f7ff; /* aqui sim aplica o fundo corretamente */
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+
+h1 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    color: #1890ff; /* Azul mais forte para o título */
+    text-align: center;
+    margin-bottom: 2rem; /* Mais espaço abaixo do título principal */
+}
+
+h2 {
+    color: #595959;
+    margin-bottom: 1.5rem;
+}
+
+a {
+    color: #1890ff;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #096dd9;
+    text-decoration: underline;
+}
+
+.data-card {
+    background-color: #fff;
+    border: 1px solid #d9d9d9;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.data-card-title {
+    color: #262626;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.weather-info {
+    padding: 1rem;
+    background-color: #f0faff;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    border: 1px solid #bae7ff;
+}
+
+.weather-label {
+    font-weight: bold;
+    color: #434343;
+    margin-right: 0.5rem;
+}
+
+/* Estilos para a navegação */
+.navbar-climate {
+  background-color: #e6f7ff;
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.navbar-climate .nav-link {
+  background-color: white;
+  border: 1px solid #bae7ff;
+  color: #1890ff;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  text-align: center;
+  min-width: 100px;
+  text-decoration: none;
+}
+
+.navbar-climate .nav-link:hover {
+  background-color: #e6f7ff;
+  border-color: #91d5ff;
+  color: #096dd9;
+  text-decoration: none;
+}
+
+
+/* Centralizar o formulário e dar mais espaço */
+.auth-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+
+
+.auth-form {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 400px;
+}
