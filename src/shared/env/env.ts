@@ -29,6 +29,8 @@ const envSchema = z.object({
   // NODEMAILER_USER: z.string().min(1),
   // NODEMAILER_PASS: z.string().min(1),
   // EMAIL: z.string().email().min(1),
+
+  ALLOWED_ORIGINS: z.string().optional().default("http://localhost:3000"),
 });
 
 const _env = envSchema.parse(process.env);
