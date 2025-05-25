@@ -2,6 +2,7 @@
   "name": "weather-sync-backend",
   "version": "1.0.50",
   "scripts": {
+    "build": "bun build src/app.ts --outdir=dist",
     "dev": "bun --watch src/app.ts",
     "test": "bun test --env-file .env ./src/**/infra/tests/*.test.ts"
   },
@@ -20,8 +21,8 @@
     "drizzle-orm": "^0.43.1",
     "elysia": "latest",
     "nodemailer": "^7.0.3",
+    "pdfkit": "^0.17.1",
     "pg": "^8.15.6",
-    "puppeteer": "^24.9.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "recharts": "^2.15.3",
@@ -32,6 +33,7 @@
   "devDependencies": {
     "@faker-js/faker": "^9.7.0",
     "@types/bun": "^1.2.12",
+    "@types/pdfkit": "^0.13.9",
     "@types/pg": "^8.11.14",
     "@types/react": "^19.1.5",
     "@types/react-dom": "^19.1.5",
