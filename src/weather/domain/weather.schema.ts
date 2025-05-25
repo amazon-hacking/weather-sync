@@ -11,7 +11,7 @@ import {
 } from "drizzle-orm/pg-core";
 
 export const weatherSchema = GOLD_SCHEMA.table(
-  "weather",
+  "weather_data",
   {
     id: serial("id").primaryKey().notNull(),
     placeId: integer("place_id")
