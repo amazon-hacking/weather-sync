@@ -70,7 +70,7 @@ console.log(`
   🌍 Environment: ${env.NODE_ENV?.toUpperCase()}
   📡 URL: http://localhost:${env.APP_PORT}
   📚 Docs: http://localhost:${env.APP_PORT}/docs
-  🎨 Website: http://localhost:5173/docs
+  🎨 Website: http://localhost:5173/
   ⚡ Runtime: Bun + Elysia
   📱 SMS: Twilio Integration
   
