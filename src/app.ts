@@ -31,7 +31,11 @@ const app = new Elysia({
     })
   )
   .use(routes)
-  .listen(env.APP_PORT);
+  .listen(env.APP_PORT)
+  .get("/health-check", () => {
+    console.log("Health check");
+    return { status: "ok" };
+  });
 
 export type app = typeof app;
 
