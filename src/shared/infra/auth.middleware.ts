@@ -28,9 +28,18 @@ export const authMiddleware = new Elysia()
       name: "jwt",
       secret: env.JWT_SECRET,
       exp: "30d",
+      alg: "HS256", // Algoritmo específico
     })
   )
-  .use(cookie())
+  .use(
+    cookie({
+      httpOnly: true,
+      secure: env.NODE_ENV === "production",
+      sameSite: env.NODE_ENV === "production" ? "strict" : "lax",
+      maxAge: 60 * 60 * 24 * 7, // 7 dias em segundos
+      path: "/",
+    })
+  )
   .derive(
     { as: "scoped" },
     ({ jwt, cookie: { weather_sync_token }, headers }) => {
@@ -111,21 +120,29 @@ export const authMiddleware = new Elysia()
 
           console.log("Setting cookie with token:", token);
 
-          // Define o cookie usando a API do Elysia
           weather_sync_token.set({
             value: token,
             httpOnly: true,
-            secure: env.NODE_ENV === "production",
-            sameSite: "lax",
-            maxAge: 60 * 60 * 24 * 7, // 7 dias em segundos
+            secure: env.NODE_ENV === "production", // Apenas HTTPS em produção
+            sameSite: env.NODE_ENV === "production" ? "strict" : "lax",
+            maxAge: 60 * 60 * 24 * 30,
             path: "/",
           });
 
           return token;
         },
 
-        logout: () => {
+        logout: (set: { headers: Record<string, string> }) => {
           weather_sync_token.remove();
+
+          // Headers de segurança para logout
+          if (env.NODE_ENV === "production") {
+            set.headers = {
+              ...set.headers,
+              "Cache-Control": "no-store, no-cache, must-revalidate, private",
+              "Clear-Site-Data": '"cookies", "storage"', // Limpa dados do site
+            };
+          }
         },
       };
     }
