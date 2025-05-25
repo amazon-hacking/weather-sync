@@ -1,11 +1,11 @@
 {
-  "id": "acf17c00-78ed-4253-8620-58225e080ec1",
-  "prevId": "d685ef8f-4f04-4aab-b895-170ba5b320f0",
+  "id": "eea07fdf-94f3-4fe7-bbd3-1b4fbace258e",
+  "prevId": "acf17c00-78ed-4253-8620-58225e080ec1",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
-    "gold.air_quality": {
-      "name": "air_quality",
+    "gold.air_quality_data": {
+      "name": "air_quality_data",
       "schema": "gold",
       "columns": {
         "id": {
@@ -54,9 +54,9 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "air_quality_place_id_places_id_fk": {
-          "name": "air_quality_place_id_places_id_fk",
-          "tableFrom": "air_quality",
+        "air_quality_data_place_id_places_id_fk": {
+          "name": "air_quality_data_place_id_places_id_fk",
+          "tableFrom": "air_quality_data",
           "tableTo": "places",
           "schemaTo": "gold",
           "columnsFrom": [
@@ -68,10 +68,10 @@
           "onDelete": "no action",
           "onUpdate": "no action"
         },
-        "air_quality_source_id_data_source_id_fk": {
-          "name": "air_quality_source_id_data_source_id_fk",
-          "tableFrom": "air_quality",
-          "tableTo": "data_source",
+        "air_quality_data_source_id_data_sources_id_fk": {
+          "name": "air_quality_data_source_id_data_sources_id_fk",
+          "tableFrom": "air_quality_data",
+          "tableTo": "data_sources",
           "schemaTo": "gold",
           "columnsFrom": [
             "source_id"
@@ -89,8 +89,8 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "gold.data_source": {
-      "name": "data_source",
+    "gold.data_sources": {
+      "name": "data_sources",
       "schema": "gold",
       "columns": {
         "id": {
@@ -372,10 +372,10 @@
           "onDelete": "no action",
           "onUpdate": "no action"
         },
-        "pollutants_source_id_data_source_id_fk": {
-          "name": "pollutants_source_id_data_source_id_fk",
+        "pollutants_source_id_data_sources_id_fk": {
+          "name": "pollutants_source_id_data_sources_id_fk",
           "tableFrom": "pollutants",
-          "tableTo": "data_source",
+          "tableTo": "data_sources",
           "schemaTo": "gold",
           "columnsFrom": [
             "source_id"
@@ -457,10 +457,10 @@
           "onDelete": "no action",
           "onUpdate": "no action"
         },
-        "sensors_source_id_data_source_id_fk": {
-          "name": "sensors_source_id_data_source_id_fk",
+        "sensors_source_id_data_sources_id_fk": {
+          "name": "sensors_source_id_data_sources_id_fk",
           "tableFrom": "sensors",
-          "tableTo": "data_source",
+          "tableTo": "data_sources",
           "schemaTo": "gold",
           "columnsFrom": [
             "source_id"
@@ -739,8 +739,8 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "gold.weather": {
-      "name": "weather",
+    "gold.weather_data": {
+      "name": "weather_data",
       "schema": "gold",
       "columns": {
         "id": {
@@ -831,9 +831,9 @@
         }
       },
       "foreignKeys": {
-        "weather_place_id_places_id_fk": {
-          "name": "weather_place_id_places_id_fk",
-          "tableFrom": "weather",
+        "weather_data_place_id_places_id_fk": {
+          "name": "weather_data_place_id_places_id_fk",
+          "tableFrom": "weather_data",
           "tableTo": "places",
           "schemaTo": "gold",
           "columnsFrom": [
@@ -845,10 +845,10 @@
           "onDelete": "no action",
           "onUpdate": "no action"
         },
-        "weather_source_id_data_source_id_fk": {
-          "name": "weather_source_id_data_source_id_fk",
-          "tableFrom": "weather",
-          "tableTo": "data_source",
+        "weather_data_source_id_data_sources_id_fk": {
+          "name": "weather_data_source_id_data_sources_id_fk",
+          "tableFrom": "weather_data",
+          "tableTo": "data_sources",
           "schemaTo": "gold",
           "columnsFrom": [
             "source_id"
