@@ -256,7 +256,15 @@ export const AuthController = new Elysia({
           throw new UnauthorizedError();
         }
 
-        logout();
+        logout({
+          ...set,
+          headers: Object.fromEntries(
+            Object.entries(set.headers).map(([key, value]) => [
+              key,
+              String(value),
+            ])
+          ),
+        });
 
         set.status = 200;
         return {

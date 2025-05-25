@@ -24,11 +24,13 @@ const envSchema = z.object({
   /**
    * MAIL ENVIROMENTS
    */
-  NODEMAILER_HOST: z.string().min(1),
-  NODEMAILER_PORT: z.coerce.number().default(587),
-  NODEMAILER_USER: z.string().min(1),
-  NODEMAILER_PASS: z.string().min(1),
-  EMAIL: z.string().email().min(1),
+  // NODEMAILER_HOST: z.string().min(1),
+  // NODEMAILER_PORT: z.coerce.number().default(587),
+  // NODEMAILER_USER: z.string().min(1),
+  // NODEMAILER_PASS: z.string().min(1),
+  // EMAIL: z.string().email().min(1),
+
+  ALLOWED_ORIGINS: z.string().optional().default("http://localhost:3000"),
 });
 
 const _env = envSchema.parse(process.env);

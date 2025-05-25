@@ -1,0 +1,26 @@
+# .dockerignore
+node_modules
+.git
+.gitignore
+.dockerignore
+Dockerfile*
+README.md
+.env*
+*.log
+.vscode
+.idea
+.DS_Store
+coverage
+.nyc_output
+dist
+build
+.cache
+*.md
+docs/
+tests/
+test/
+spec/
+.github/
+.gitlab-ci.yml
+.travis.yml
+Pulumi.*
