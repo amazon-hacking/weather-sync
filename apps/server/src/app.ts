@@ -62,8 +62,30 @@ const app = new Elysia({
 export type app = typeof app;
 
 console.log(`
-  Weather Sync API
-  Environment: ${env.NODE_ENV}
-  Listening on: http://localhost:${env.APP_PORT}
-  Documentation: http://localhost:${env.APP_PORT}/docs
+  🌤️  WEATHER SYNC API
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  🚀  TURBO: Turbo Mono Repo
+
+  🚀 Server started successfully!
+  🌍 Environment: ${env.NODE_ENV?.toUpperCase()}
+  📡 URL: http://localhost:${env.APP_PORT}
+  📚 Docs: http://localhost:${env.APP_PORT}/docs
+  🎨 Website: http://localhost:5173/docs
+  ⚡ Runtime: Bun + Elysia
+  📱 SMS: Twilio Integration
+  
+  👥 DEVELOPMENT TEAM
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  
+  🧑‍💻 Gabriel Santos - Software Engineer
+  🧑‍💻 João Miguel - Frontend Developer
+  👨‍💼 Felipe Cruz - Scrum Leader & Data Analystics
+  👩‍💻 Pablo Abdon - Data Analystics
+  🧑‍💻 Davi Cavalcante - Data Engineer
+  🧑‍💻 Antônio Lucas - Data Analystics
+  👨‍🎤 Isadora Cassiano - Urban Development Analyst
+  👨‍🔧 Lucas Oliveira - Urban Development Analyst
+  👩‍💻 Ana Clara - Hardware Infrastructure Engineer
+  
+  🎯 Ready to sync the weather! Happy coding! ⭐
   `);
