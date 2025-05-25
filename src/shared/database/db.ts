@@ -20,6 +20,10 @@ if (env.NODE_ENV === "production") {
 
   const devPool = new Pool({
     connectionString: env.DATABASE_URL,
+    // Optional: Add SSL configuration if needed, on Tembo,It is necessary to put
+    // ssl: {
+    //   rejectUnauthorized: false,
+    // },
   });
 
   activesPools.push(devPool);
