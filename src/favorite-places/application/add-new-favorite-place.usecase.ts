@@ -1,5 +1,6 @@
 import type { IFavoritePlaceRepository } from "@/favorite-places/domain/favorite-place.interface.repository";
 import type { IPlaceRepository } from "@/places/domain/place-repository.interface";
+import { PlaceNotFoundError } from "@/shared/errors/place-not-found-error";
 import { t, type Static } from "elysia";
 
 export const addNewFavoritePlaceUseCaseInputSchema = t.Object({
@@ -17,7 +18,7 @@ export async function addNewFavoritePlaceUseCase(
   const isPlaceAlreadyExists = await placeRepository.getPlaceById(data.placeId);
 
   if (!isPlaceAlreadyExists) {
-    throw new Error("Place not found");
+    throw new PlaceNotFoundError();
   }
 
   const thisUserAlreadyHasThisPlace =
