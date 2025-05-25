@@ -1,3 +1,4 @@
+import { PlaceNotFoundError } from "@/shared/errors/place-not-found-error";
 import { UnauthorizedError } from "@/shared/errors/unauthorized-error";
 import { authMiddleware } from "@/shared/infra/auth.middleware";
 import { repositories } from "@/shared/singleton/repositories";
@@ -38,6 +39,13 @@ export const FavoritePlaceController = new Elysia({
           message: "Place added to favorites",
         };
       } catch (error) {
+        if (error instanceof PlaceNotFoundError) {
+          set.status = 404;
+          return {
+            status: "error",
+            message: error.message,
+          };
+        }
         set.status = 500;
         console.error("Error adding favorite place:", error);
 
