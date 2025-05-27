@@ -1,0 +1,20 @@
+config:
+  aws:region: us-east-1
+  weather-sync-aws:nodeEnv: production
+  weather-sync-aws:appPort: "8080"
+  weather-sync-aws:allowedOrigins: https://weather-sync.com.br
+  weather-sync-aws:mailFrom: weather.sync.api@gmail.com
+  weather-sync-aws:twilioTemplate: HX2e23e122945e470615bd3ef368cf085f
+  weather-sync-aws:twilioAccount: 2TTFJTV4T87Q2789YR4GHHGE
+  weather-sync-aws:databaseUrl:
+    secure: AAABABoJrCNDbEfO+qHWe0VOSEVeEONcOeAStQ8qL6CWpvlXMb493hvXYQRaLVnX4Y4ZeStnHbQG4844/Ql+hNDtuuyWjNdPc2M0q178F7fYDZOZIhQucbu15bJ3Vf7lmr6/y9FthU4Qiar74sM556n1EzEbF9QlSqM0D94=
+  weather-sync-aws:jwtSecret:
+    secure: AAABAKXvbxBWH0LtOWWzmBkHFP96w9BRiN1dWLUfC/xvXd+OxfAcZXs/ZgeussnxCw1QybiJkbK8FTjfLjkyq8hzeUfS0TUI+kAKbgzbaYbq3qbl/fBcwUNvnu9DAnNlEfwP/FPw7HXo0/42vuNQxkssLAb+1BzRdyQRPQ==
+  weather-sync-aws:twilioAccountSid:
+    secure: AAABAMF8pMMlT6adirt/6E5D6DT75wzkO6nMLktD1HjbBUu95pDvB000VMUvagOMmG5wzsJRTf0NqoUFdTISMKx1
+  weather-sync-aws:twilioAuthToken:
+    secure: AAABANMiOMqgA8Tj8fFG75ccjF1tB9QdHYrvkcvUSsvYq8Fm0CBYZuwKwDAMRs+m9IQ3YXpb1RoSRXBqM46c0g==
+  weather-sync-aws:twilioPhoneNumber:
+    secure: AAABANEmrGGC66u269zcfYls39ncL/8f5S7B4RVQZnMWYJvqKzTqR9xUz9U=
+  weather-sync-aws:twilioMessagingServiceSid:
+    secure: AAABAHip3SKgLS+PxAnfqx4zxGyQzAVKEvImgkMhkJAbKit0ypeFf9zy3jAwsKfLtfaTWCmA0wavVT4WaiUuOZsk
