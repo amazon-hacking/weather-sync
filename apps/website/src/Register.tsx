@@ -1,6 +1,20 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "./api";
+import { z } from "zod";
+
+const registerSchema = z.object({
+  name: z.string()
+    .min(1, "Nome é obrigatório")
+    .regex(/^[^\d]+$/, "O nome não pode conter números")
+    .regex(/^(?!.*[A-Z]{2,}).*$/, "Use espaço entre nomes compostos (evite letras maiúsculas consecutivas)"),
+  email: z.string()
+    .email("E-mail inválido")
+    .regex(/^[^@\s]+@[^@\s]+\.[^\d\s]+$/, "Domínio do e-mail não pode conter números"),
+  password: z.string().min(6, "Senha muito curta"),
+  phoneNumber: z.string().regex(/^\+55\d{8}$/, "Formato inválido. Use +55 e 8 dígitos."),
+});
+
 
 export default function Register(): JSX.Element {
   const [name, setName] = useState("");
@@ -18,63 +32,35 @@ export default function Register(): JSX.Element {
     setErro("");
     setLoading(true);
 
-    // Validações básicas no frontend
-    if (!name.trim()) {
-      setErro("Nome é obrigatório");
-      setLoading(false);
-      return;
-    }
-
-    if (!email.trim()) {
-      setErro("E-mail é obrigatório");
-      setLoading(false);
-      return;
-    }
-
-    if (!password.trim()) {
-      setErro("Senha é obrigatória");
-      setLoading(false);
-      return;
-    }
-
-    if (!phoneNumber.trim()) {
-      setErro("Número de celular é obrigatório");
-      setLoading(false);
-      return;
-    }
-
-    const userData = {
-      name: name.trim(),
-      email: email.trim(),
-      password: password.trim(),
-      phoneNumber: phoneNumber.trim(),
-      provider: "credentials",
-      notifications: notifications ? "yes" : "no"
-    };
-
-    console.log("Dados sendo enviados:", userData);
-
     try {
+      const validated = registerSchema.parse({
+        name,
+        email,
+        password,
+        phoneNumber,
+      });
+
+      const userData = {
+        ...validated,
+        provider: "credentials",
+        notifications: notifications ? "yes" : "no",
+      };
+
+      console.log("Dados sendo enviados:", userData);
       const response = await api.post("/v1/auth/register", userData);
       console.log("Resposta do servidor:", response);
-      
-      // Sucesso - redireciona para login
       navigate("/login");
     } catch (err: any) {
-      console.error("Erro completo:", err);
-      console.error("Resposta do erro:", err.response);
-      
-      if (err.response) {
-        // Servidor respondeu com erro
+      if (err instanceof z.ZodError) {
+        setErro(err.errors[0].message);
+      } else if (err.response) {
         const errorMessage = err.response.data?.message || 
-                           err.response.data?.error || 
-                           `Erro do servidor: ${err.response.status}`;
+                             err.response.data?.error || 
+                             `Erro do servidor: ${err.response.status}`;
         setErro(errorMessage);
       } else if (err.request) {
-        // Requisição foi feita mas não houve resposta
         setErro("Não foi possível conectar ao servidor. Verifique sua conexão.");
       } else {
-        // Algo aconteceu na configuração da requisição
         setErro("Erro ao processar a requisição.");
       }
     } finally {
@@ -177,7 +163,7 @@ export default function Register(): JSX.Element {
                       type="tel"
                       className="form-control form-control-lg"
                       id="phoneNumber"
-                      placeholder="Ex: 91912345678"
+                      placeholder="Ex: +5588888888"
                       value={phoneNumber}
                       onChange={(e) => setPhoneNumber(e.target.value)}
                       required

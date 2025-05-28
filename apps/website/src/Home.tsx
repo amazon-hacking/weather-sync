@@ -277,6 +277,15 @@ export default function Home(): JSX.Element {
           </div>
         </div>
       </div>
+      <div className="d-flex justify-content-end mb-3">
+  <button
+    className="btn btn-sm btn-outline-primary"
+    onClick={() => navigate("/welcome")}
+  >
+    ⬅️ Voltar para início
+  </button>
+</div>
+
 
       {/* Footer */}
       <footer className="py-4" style={{ backgroundColor: '#262626', color: '#fff' }}>

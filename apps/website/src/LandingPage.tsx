@@ -73,7 +73,7 @@ export default function LandingPage(): JSX.Element {
                     <div className="mb-3">
                       <span className="fs-1">📊</span>
                     </div>
-                    <h5 className="card-title fw-semibold">Previsões Precisas</h5>
+                    <h5 className="card-title fw-semibold">Dados Precisos</h5>
                     <p className="card-text text-muted small">
                       Interface simples com dados meteorológicos atualizados
                     </p>

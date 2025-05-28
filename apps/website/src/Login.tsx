@@ -11,20 +11,21 @@ export default function Login(): JSX.Element {
   const navigate = useNavigate();
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setLoading(true);
-    setErro("");
+  e.preventDefault();
+  setLoading(true);
+  setErro("");
 
-    try {
-      const res = await api.post("/v1/auth/login", { email, password });
-      localStorage.setItem("token", res.data.token);
-      navigate("/home");
-    } catch (err: any) {
-      setErro(err.response?.data?.message || "Erro ao fazer login.");
-    } finally {
-      setLoading(false);
-    }
-  };
+  try {
+    const res = await api.post("/v1/auth/login", { email, password });
+    localStorage.setItem("token", res.data.token);
+    navigate("/welcome"); // ✅ redireciona para a nova landing page
+  } catch (err: any) {
+    setErro(err.response?.data?.message || "Erro ao fazer login.");
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   return (
     <div className="min-vh-100" style={{ backgroundColor: '#e6f7ff' }}>
