@@ -9,7 +9,10 @@ export const ID_LENGTH = 36;
 /**
  * USERS ENUMS SCHEMA
  */
-export const userSignatureStatusEnum = pgEnum("signature_status", ["active", "inactive"]);
+export const userSignatureStatusEnum = pgEnum("signature_status", [
+  "active",
+  "inactive",
+]);
 
 export const userRoleEnum = pgEnum("role", ["admin", "user"]);
 
@@ -20,22 +23,22 @@ export const notificationsStatusEnum = pgEnum("notifications", ["yes", "no"]);
  */
 
 export const subscriptionStatusEnum = pgEnum("subscription_status", [
-    "active",
-    "inactive",
-    "expired",
-    "cancelled",
-    "pending",
-    "suspended",
-    "refunded",
-    "failed",
-    "disputed",
+  "active",
+  "inactive",
+  "expired",
+  "cancelled",
+  "pending",
+  "suspended",
+  "refunded",
+  "failed",
+  "disputed",
 ]);
 
 /**
  * OTHER DEFINITIONS
  */
 
-export const MAX_WATER_LEVEL: number = 0.5; // Defina o nível máximo de água desejado
+export const MAX_WATER_LEVEL: number = 0.2; // Defina o nível máximo de água desejado
 
 /**
  * GOLD SCHEMA CONFIGURATION

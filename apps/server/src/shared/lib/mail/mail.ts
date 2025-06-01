@@ -83,7 +83,7 @@ export const createEmailTransporter =
 
 export const getFromEmail = (): string => {
   return env.NODE_ENV === "production"
-    ? env.AWS_SES_EMAIL
+    ? env.MAIL_FROM
     : "naoresponda@weather-sync.com.br";
 };
 
