@@ -1,4 +1,0 @@
-{
-  "buildCommand": "pnpm run build --filter=website",
-  "installCommand": "pnpm install --frozen-lockfile"
-}
