@@ -1,15 +1,14 @@
-# Dockerfile simplificado para Weather Sync
 FROM oven/bun:1-slim
 
 # Configurar ambiente
 ENV NODE_ENV=production
 WORKDIR /app
 
-# Copiar e instalar dependências
+# Copiar package.json da pasta server
 COPY package.json bun.lockb* ./
 RUN bun install --frozen-lockfile --production
 
-# Copiar código fonte
+# Copiar código fonte da pasta server
 COPY . .
 
 # Configurar usuário e porta
