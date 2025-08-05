@@ -25,6 +25,7 @@ export const AuthController = new Elysia({
           body
         );
 
+
         set.status = 201;
         return {
           status: "success",
@@ -41,6 +42,7 @@ export const AuthController = new Elysia({
           return { status: "failed", message: e.message };
         }
 
+        console.error(e);
         set.status = 500;
         return { status: "failed", message: "Internal server error" };
       }

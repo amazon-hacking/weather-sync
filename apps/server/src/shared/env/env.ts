@@ -5,6 +5,14 @@ const envSchema = z.object({
    * VARIÁVEIS DA APLICAÇÃO
    */
   DATABASE_URL: z.string().url(),
+  REDIS_HOST: z.string().min(1),
+  REDIS_PORT: z.coerce.number().default(6379),
+  REDIS_PASSWORD: z.string().optional(),
+  REDIS_USERNAME: z.string().optional(),
+  REDIS_DB: z.coerce.number().default(0),
+  REDIS_TTL: z.coerce.number().default(60 * 60 * 24),
+  REDIS_URL: z.string().url(),
+
   NODE_ENV: z
     .enum(["development", "production", "test"])
     .default("development"),
@@ -15,11 +23,11 @@ const envSchema = z.object({
   /**
    * TWILIO ENVIROMENTS
    */
-  TWILIO_ACCOUNT: z.string().min(1),
-  TWILIO_ACCOUNT_SID: z.string().min(1),
-  TWILIO_AUTH_TOKEN: z.string().min(1),
-  TWILIO_PHONE_NUMBER: z.string().min(1),
-  TWILIO_TEMPLATE: z.string().min(1),
+  // TWILIO_ACCOUNT: z.string().min(1),
+  // TWILIO_ACCOUNT_SID: z.string().min(1),
+  // TWILIO_AUTH_TOKEN: z.string().min(1),
+  // TWILIO_PHONE_NUMBER: z.string().min(1),
+  // TWILIO_TEMPLATE: z.string().min(1),
 
   /**
    * MAIL ENVIROMENTS

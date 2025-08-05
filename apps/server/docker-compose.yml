@@ -1,0 +1,31 @@
+services:
+  redis:
+    container_name: weather-sync-redis
+    image: bitnami/redis:latest
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./data/redis:/bitnami/redis/data
+    environment:
+      # IMPORTANTE: Bitnami Redis precisa desta configuração
+      - ALLOW_EMPTY_PASSWORD=yes
+      # OU se quiser senha:
+      # - REDIS_PASSWORD=mypassword
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+  postgres:
+    container_name: postgres_db
+    image: bitnami/postgresql:latest
+    ports:
+      - 5499:5432
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    restart: always

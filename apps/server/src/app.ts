@@ -3,6 +3,9 @@ import { cors } from "@elysiajs/cors";
 import swagger from "@elysiajs/swagger";
 import { Elysia } from "elysia";
 import { routes } from "./app.routes";
+import {
+  connectRedis,
+} from "./shared/database/redis-client";
 
 const app = new Elysia({
   serve: {
@@ -58,6 +61,10 @@ const app = new Elysia({
     console.log("Health check");
     return { status: "ok" };
   });
+
+await connectRedis();
+
+
 
 export type app = typeof app;
 
